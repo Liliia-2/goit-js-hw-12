@@ -22,7 +22,7 @@ export function createGallery(images) {
         comments,
         downloads,
       }) => `
-    <div class="gallery-item">
+    <li class="gallery-item">
       <a href="${largeImageURL}">
         <img src="${webformatURL}" alt="${tags}" />
       </a>
@@ -32,7 +32,7 @@ export function createGallery(images) {
         <p>Comments: ${comments}</p>
         <p>Downloads: ${downloads}</p>
       </div>
-    </div>
+    </li>
   `
     )
     .join('');
