@@ -48,7 +48,13 @@ form.addEventListener('submit', async e => {
 
     if (totalHits > 15) {
       showLoadMoreButton();
-    }
+    }  else {
+  hideLoadMoreButton();
+
+  iziToast.info({
+    message: "We're sorry, but you've reached the end of search results.",
+  });
+}
   } catch (error) {
     iziToast.error({
       message: 'Error loading images',
@@ -60,7 +66,7 @@ form.addEventListener('submit', async e => {
 
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
-
+  hideLoadMoreButton();
   showLoader();
 
   try {
@@ -76,6 +82,8 @@ loadMoreBtn.addEventListener('click', async () => {
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
       });
+    } else {
+      showLoadMoreButton();
     }
 
     // scroll
